@@ -1,0 +1,66 @@
+@startuml
+class Moneda{
+    + int ID
+    + int valor
+}
+
+class Comprador{
+    - Tripla tripla
+    - string valorConsumo
+    - int recibirMoneda()
+    - string recibirOrdenProducto()
+    - string recibirReferenciaMáquina()
+    - string consumir()
+}
+
+class Tripla{
+    - int moneda
+    - string ordenProducto
+    - int referenciaMáquina
+}
+
+class Producto{
+    - string nombre
+    - int ID
+    - int precio
+    - int cantidad
+    - int calcularVuelto()
+}
+
+class Máquina{
+    + int ID
+    - int contDepot
+    + int vuelto
+    - bool procesarMoneda()
+    + string entregarProducto()
+    + int devolverVuelto()
+}
+
+exception MáquinaExcepción{
+    - int code
+    - date timeStamp
+    - string mensaje
+    + int getCódigo()
+    + date getTimeStamp()
+    + string getMensaje()
+}
+exception pagoIncorrectoExcepción{
+    - int montoRequerido
+    + int getMonto()
+}
+exception noHayProductoExecepción{
+    - int montoRequerido
+    - string productoFaltante
+    + int getMonto()
+    + string getProductoFaltante()
+}
+
+Moneda -- Comprador
+Moneda -- Máquina
+Comprador *-- Tripla
+Comprador -- Máquina
+Máquina o-- Producto
+Máquina - MáquinaExcepción : create >
+pagoIncorrectoExcepción -- MáquinaExcepción
+noHayProductoExecepción -- MáquinaExcepción
+@enduml
