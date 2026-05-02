@@ -70,7 +70,19 @@ public Producto comprarProducto(Moneda m, Seleccion p)
         monVuelto.add(m); // se devuelve la moneda
         throw new NoHayProductoException("No queda stock de " + p.getNombre());
     }
-    // vuelto
+    // vuelto en moneda100
+    int vuelto = m.getValor() - p.getPrecio();
+    while (vuelto >= 100) {
+        monVuelto.add(new Moneda100())
+        vuelto -= 100;
+    }
+
+    return prod;
+}
+public Moneda getvuelto(){
+    return monVuelto.get();
+    }
+}
     
     
   
