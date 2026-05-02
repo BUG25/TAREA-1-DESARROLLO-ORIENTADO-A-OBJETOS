@@ -34,7 +34,13 @@ private Deposito<Moneda> monVuelto;
     super8.add(new Super8(203, "Super 8", Seleccion.SUPER8.getPrecio()));
     }
 }
-// hay que crear comprar producto
+public Producto comprarProducto(Moneda m, Seleccion p)
+        throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
+
+    // exception 1 veemos si es valido el pago con PgoIncorrectoException
+    if (m == null) {
+        throw new PagoIncorrectoException("Error: No se ha ingresado una moneda.");
+    }
     
     
   
