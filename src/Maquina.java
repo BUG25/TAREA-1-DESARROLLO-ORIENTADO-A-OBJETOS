@@ -16,4 +16,23 @@ public class Maquina {
 
 // deposito gen para las monedad del vuelto
 private Deposito<Moneda> monVuelto;
+    // crear depositos para cada producto y el vuelto
+    public Maquina (int cantidad) {
+    this.cocacola = new Deposito <> ();
+    this.sprite = new Deposito <> ();
+    this.fanta = new Deposito <> ();
+    this.snickers = new Deposito <> ();
+    this.super8 = new Deposito <> ();
+    this.monVuelto = new Deposito <> ();
+
+    // rellenamos depositos con la cantidad
+    for (int i = 0; i < cantidad; i++) {
+    cocacola.add(new CocaCola(101, "Coca Cola", Seleccion.COCA_COLA.getPrecio()));
+    sprite.add(new Sprite(102, "Sprite", Seleccion.SPRITE.getPrecio()));
+    fanta.add(new Fanta(201, "Fanta", Seleccion.FANTA.getPrecio()));
+    snickers.add(new Snickers(202, "Snickers", Seleccion.SNICKERS.getPrecio()));
+    super8.add(new Super8(203, "Super 8", Seleccion.SUPER8.getPrecio()));
+
+    
+    
   
