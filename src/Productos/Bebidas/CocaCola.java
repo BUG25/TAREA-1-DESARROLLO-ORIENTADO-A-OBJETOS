@@ -1,3 +1,5 @@
+package src.Productos.Bebidas;
+
 public class CocaCola extends Bebida {
     public CocaCola (String nombre, int ID, int precio, int cantidad){
         super(nombre, ID, precio, cantidad);
@@ -5,6 +7,6 @@ public class CocaCola extends Bebida {
 
     @Override
     public String getSabor() {
-        return "CocaCola";
+        return "src.Productos.Bebidas.CocaCola";
     }
 }

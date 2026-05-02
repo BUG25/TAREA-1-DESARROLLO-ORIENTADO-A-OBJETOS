@@ -1,3 +1,5 @@
+package src.Monedas;
+
 public abstract class Moneda {
     private int valor;
     public Moneda(int valor){

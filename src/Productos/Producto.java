@@ -1,3 +1,5 @@
+package src.Productos;
+
 public class Producto {
     private String nombre;
     private int ID;

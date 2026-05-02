@@ -1,5 +1,7 @@
+package src.Excepciones;
+
 public class PagoIncorrectoException extends Exception {
-  public PagoIncorrectoException(string mensaje) {
+  public PagoIncorrectoException(String mensaje) {
     super(mensaje);
   }
 }

@@ -1,3 +1,5 @@
+package src.Depositos;
+
 import java.util.ArrayList;
 public class Deposito<T> {
   private ArrayList<T> lista;

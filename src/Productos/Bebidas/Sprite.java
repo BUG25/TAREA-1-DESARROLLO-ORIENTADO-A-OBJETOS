@@ -1,3 +1,5 @@
+package src.Productos.Bebidas;
+
 public class Sprite extends Bebida {
     public Sprite(String nombre, int ID, int precio, int cantidad){
         super(nombre, ID, precio, cantidad);
@@ -5,6 +7,6 @@ public class Sprite extends Bebida {
 
     @Override
     public String getSabor() {
-        return "Sprite";
+        return "src.Productos.Bebidas.Sprite";
     }
 }

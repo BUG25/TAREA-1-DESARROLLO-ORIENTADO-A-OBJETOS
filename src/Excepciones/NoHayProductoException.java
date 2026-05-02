@@ -1,5 +1,7 @@
+package src.Excepciones;
+
 public class NoHayProductoException extends Exception {
-  public NohayProductoException(String mensaje) {
+  public NoHayProductoException(String mensaje) {
     super(mensaje);
   }
 }

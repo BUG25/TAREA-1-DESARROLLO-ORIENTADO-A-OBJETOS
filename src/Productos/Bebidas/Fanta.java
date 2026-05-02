@@ -1,3 +1,5 @@
+package src.Productos.Bebidas;
+
 public class Fanta extends Bebida {
     public Fanta (String nombre, int ID, int precio, int cantidad){
         super(nombre, ID, precio, cantidad);
@@ -5,6 +7,6 @@ public class Fanta extends Bebida {
 
     @Override
     public String getSabor() {
-        return "Fanta";
+        return "src.Productos.Bebidas.Fanta";
     }
 }

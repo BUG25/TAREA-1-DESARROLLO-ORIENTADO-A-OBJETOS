@@ -1,3 +1,7 @@
+package src.Productos.Bebidas;
+
+import src.Productos.Producto;
+
 public abstract class Bebida extends Producto {
     public Bebida (String nombre, int ID, int precio, int cantidad){
         super(nombre, ID, precio, cantidad);

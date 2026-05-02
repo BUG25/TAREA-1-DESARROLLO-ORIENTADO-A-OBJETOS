@@ -1,3 +1,5 @@
+package src.Productos.Dulces;
+
 public class Snickers extends Dulce{
     public Snickers(String nombre, int ID, int precio, int cantidad){
         super(nombre, ID, precio, cantidad);
@@ -5,6 +7,6 @@ public class Snickers extends Dulce{
 
     @Override
     public String getSabor() {
-        return "Snickers";
+        return "src.Productos.Dulces.Snickers";
     }
 }
