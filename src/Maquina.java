@@ -39,12 +39,12 @@ public Producto comprarProducto(Moneda m, Seleccion p)
 
     // exception 1 veemos si es valido el pago con PgoIncorrectoException
     if (m == null) {
-        throw new PagoIncorrectoException("Error: No se ha ingresado una moneda.");
+        throw new PagoIncorrectoException("No se ha ingresado una moneda.");
     }
      // exception 2 verificamos que el dinero alcance para comprar con PagoInsuficienteException
     if (m.getValor() < p.getPrecio()) {
         monVuelto.add(m); // devuelve la moneda al deposito de vuelto
-        throw new PagoInsuficienteException("Error: Dinero insuficiente para " + p.getNombre());
+        throw new PagoInsuficienteException("Dinero insuficiente para " + p.getNombre()); 
     }
     // antes de hacer exception 3, hay que ver si queda del producto, viendo los depositos correspondiente
     Producto prod = null;
@@ -65,7 +65,12 @@ public Producto comprarProducto(Moneda m, Seleccion p)
             prod = super8.get();
             break;
     }
-    // ahora si hacer exception 3
+    // exception 3, si no quedan del producto, ocupamos NoHayProductoException
+    if (prod == null) {
+        monVuelto.add(m); // se devuelve la moneda
+        throw new NoHayProductoException("No queda stock de " + p.getNombre());
+    }
+    // vuelto
     
     
   
