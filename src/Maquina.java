@@ -32,7 +32,9 @@ private Deposito<Moneda> monVuelto;
     fanta.add(new Fanta(201, "Fanta", Seleccion.FANTA.getPrecio()));
     snickers.add(new Snickers(202, "Snickers", Seleccion.SNICKERS.getPrecio()));
     super8.add(new Super8(203, "Super 8", Seleccion.SUPER8.getPrecio()));
-
+    }
+}
+// hay que crear comprar producto
     
     
   
