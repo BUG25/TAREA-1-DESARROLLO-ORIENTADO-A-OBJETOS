@@ -1,24 +1,29 @@
 package src;
 import src.Depositos.Deposito;
-import src.Excepciones.*; // * es para traer todas las clases publicas dentro de la carpeta (PagoInsufiente, NoHayProducto, PagoIncorrecto)
-import src.Monedas.*; // * impotarar Moneda100, Moneda1000 y Moneda500
-import src.Productos.*; // todos los productos
-import src.Productos.Bebidas.*; // COCA_COLA, SPRITE,FANTA
-import src.Productos.Dulces.*; //SUPER8 Y SNICKERS
+import src.Excepciones.*; /** * es para traer todas las clases publicas dentro de la carpeta (PagoInsufiente, NoHayProducto, PagoIncorrecto) */
+import src.Monedas.*; /**  * impotara Moneda100, Moneda1000 y Moneda500 */
+import src.Productos.*; /** todos los productos */
+import src.Productos.Bebidas.*; /** COCA_COLA, SPRITE,FANTA */
+import src.Productos.Dulces.*; /** SUPER8 Y SNICKERS */
 
 public class Maquina {
     private int id;
-    // depositos para cada  producto
+    /** depositos para cada  producto */
     private Deposito<Bebida> cocacola;
     private Deposito<Bebida> sprite;
     private Deposito<Bebida> fanta;
     private Deposito<Dulce> snickers;
     private Deposito<Dulce> super8;
 
-// deposito gen para las monedad del vuelto
+/** deposito gen para las monedad del vuelto */
 private Deposito<Moneda> monVuelto;
-    // crear depositos para cada producto y el vuelto
+    /** crear depositos para cada producto y el vuelto */
 public Maquina (int id, int cantidad) {
+    /** constructor de la maquina
+    * se rellenan los depositos usando los datos de selccion.java
+    * @param id unico
+    * @param cantidad inicial de los productos
+    */
     this.id = id;
     this.cocacola = new Deposito <> ();
     this.sprite = new Deposito <> ();
@@ -27,8 +32,9 @@ public Maquina (int id, int cantidad) {
     this.super8 = new Deposito <> ();
     this.monVuelto = new Deposito <> ();
 
-    // rellenamos depositos con la cantidad
-    // corregido orden de parámetros (nombre ID precio cantidad)
+    /** rellenamos depositos con la cantidad 
+    * corregido orden de parámetros (nombre ID precio cantidad)
+    */
     for (int i = 0; i < cantidad; i++) {
         cocacola.add(new CocaCola("Coca Cola", 101, Seleccion.COCA_COLA.getPrecio(), 1));
         sprite.add(new Sprite("Sprite", 102, Seleccion.SPRITE.getPrecio(), 1));
@@ -38,18 +44,27 @@ public Maquina (int id, int cantidad) {
     }
 }
 public Producto comprarProducto(Moneda m, Seleccion p)
+    /**
+    * se realiza la compra de algun producto
+    * @param m la moneda que se entrega para hacer la compra
+    * @param p tipo de producto seleccionado desde enum
+    * @return producto si el pago y stock estan correctos
+    * @throws PagoIncorrectoException si la moneda es invalido
+    * @throws PagoInsuficienteException si la moneda es menor al precio
+    * @throws NoHayProductoException si el deposito esta vacio
+    */
         throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
 
-    // exception 1 veemos si es valido el pago con PgoIncorrectoException
+    /** exception 1 veemos si es valido el pago con PgoIncorrectoException */
     if (m == null) {
         throw new PagoIncorrectoException("No se ha ingresado una moneda.");
     }
-     // exception 2 verificamos que el dinero alcance para comprar con PagoInsuficienteException
+     /** exception 2 verificamos que el dinero alcance para comprar con PagoInsuficienteException */
     if (m.getValor() < p.getPrecio()) {
         monVuelto.add(m); // devuelve la moneda al deposito de vuelto
         throw new PagoInsuficienteException("Dinero insuficiente para " + p.getNombre()); 
     }
-    // antes de hacer exception 3, hay que ver si queda del producto, viendo los depositos correspondiente
+    /** antes de hacer exception 3, hay que ver si queda del producto, viendo los depositos correspondiente */
     Producto prod = null;
     switch (p) {
         case COCA_COLA:
@@ -68,12 +83,12 @@ public Producto comprarProducto(Moneda m, Seleccion p)
             prod = super8.get();
             break;
     }
-    // exception 3, si no quedan del producto, ocupamos NoHayProductoException
+    /** exception 3, si no quedan del producto, ocupamos NoHayProductoException */
     if (prod == null) {
-        monVuelto.add(m); // se devuelve la moneda
+        monVuelto.add(m); //** se devuelve la moneda */
         throw new NoHayProductoException("No queda stock de " + p.getNombre());
     }
-    // vuelto en moneda100
+    /** vuelto en moneda100 */
     int vuelto = m.getValor() - p.getPrecio();
     while (vuelto >= 100) {
         monVuelto.add(new Moneda100()); //faltaba ";"
