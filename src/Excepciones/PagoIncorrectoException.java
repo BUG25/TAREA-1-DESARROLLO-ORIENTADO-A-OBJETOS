@@ -1,6 +1,6 @@
 package src.Excepciones;
 /**
-* excepcion que se activa si el pago (moneda) es insuficiente < al valor del producto
+* excepcion que se activa si el pago (moneda) es incorrecta m = null
 */
 
 public class PagoIncorrectoException extends Exception {
