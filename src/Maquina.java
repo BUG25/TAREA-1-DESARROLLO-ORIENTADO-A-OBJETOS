@@ -80,7 +80,7 @@ public Producto comprarProducto(Moneda m, Seleccion p)
 
     return prod;
 }
-public Moneda getvuelto(){
+public Moneda getVuelto(){
     return monVuelto.get();
     }
 }
