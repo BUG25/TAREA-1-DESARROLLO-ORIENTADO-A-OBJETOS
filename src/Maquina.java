@@ -84,9 +84,16 @@ public Producto comprarProducto(Moneda m, Seleccion p)
 }
 public Moneda getVuelto(){
     return monVuelto.get();
+    /** deja el vuelto en el deposito de una a una
+    * @return modenas de $100 para el vuelto
+    */
     }
 public int getID(){
     return this.id;
+    /**
+    * obtenemos el id de la maquina
+    * @return un int representando el id
+    */
     }
 }
     
