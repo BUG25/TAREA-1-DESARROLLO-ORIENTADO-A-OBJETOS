@@ -46,6 +46,26 @@ public Producto comprarProducto(Moneda m, Seleccion p)
         monVuelto.add(m); // devuelve la moneda al deposito de vuelto
         throw new PagoInsuficienteException("Error: Dinero insuficiente para " + p.getNombre());
     }
+    // antes de hacer exception 3, hay que ver si queda del producto, viendo los depositos correspondiente
+    Producto prod = null;
+    switch (p) {
+        case COCA_COLA:
+            prod = coca.get();
+            break;
+        case SPRITE:
+            prod = sprite.get();
+            break;
+        case FANTA:
+            prod = fanta.get();
+            break;
+        case SNICKERS:
+            prod = snickers.get();
+            break;
+        case SUPER8:
+            prod = super8.get();
+            break;
+    }
+    // ahora si hacer exception 3
     
     
   
