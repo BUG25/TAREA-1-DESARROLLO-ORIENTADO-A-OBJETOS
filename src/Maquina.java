@@ -26,12 +26,13 @@ private Deposito<Moneda> monVuelto;
     this.monVuelto = new Deposito <> ();
 
     // rellenamos depositos con la cantidad
+    // corregido orden de parámetros (nombre ID precio cantidad)
     for (int i = 0; i < cantidad; i++) {
-    cocacola.add(new CocaCola(101, "Coca Cola", Seleccion.COCA_COLA.getPrecio()));
-    sprite.add(new Sprite(102, "Sprite", Seleccion.SPRITE.getPrecio()));
-    fanta.add(new Fanta(201, "Fanta", Seleccion.FANTA.getPrecio()));
-    snickers.add(new Snickers(202, "Snickers", Seleccion.SNICKERS.getPrecio()));
-    super8.add(new Super8(203, "Super 8", Seleccion.SUPER8.getPrecio()));
+        cocacola.add(new CocaCola("Coca Cola", 101, Seleccion.COCA_COLA.getPrecio(), 1));
+        sprite.add(new Sprite("Sprite", 102, Seleccion.SPRITE.getPrecio(), 1));
+        fanta.add(new Fanta("Fanta", 201, Seleccion.FANTA.getPrecio(), 1));
+        snickers.add(new Snickers("Snickers", 202, Seleccion.SNICKERS.getPrecio(), 1));
+        super8.add(new Super8("Super 8", 203, Seleccion.SUPER8.getPrecio(), 1));
     }
 }
 public Producto comprarProducto(Moneda m, Seleccion p)
@@ -50,7 +51,7 @@ public Producto comprarProducto(Moneda m, Seleccion p)
     Producto prod = null;
     switch (p) {
         case COCA_COLA:
-            prod = coca.get();
+            prod = cocacola.get();  //corregido error "coca" en lugar de "cocacola"
             break;
         case SPRITE:
             prod = sprite.get();
@@ -73,7 +74,7 @@ public Producto comprarProducto(Moneda m, Seleccion p)
     // vuelto en moneda100
     int vuelto = m.getValor() - p.getPrecio();
     while (vuelto >= 100) {
-        monVuelto.add(new Moneda100())
+        monVuelto.add(new Moneda100()); //faltaba ";"
         vuelto -= 100;
     }
 

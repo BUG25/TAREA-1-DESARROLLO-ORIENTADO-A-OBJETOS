@@ -1,66 +1,133 @@
 @startuml
-class Moneda{
-    + int ID
-    + int valor
+skinparam classAttributeIconSize 0
+
+class Comprador {
+  - saborConsumo: String
+  - totalVuelto: int
+  + Comprador(m: Moneda, s: Seleccion, maq: Maquina)
+  + getSaborConsumo(): String
+  + getTotalVuelto(): int
 }
 
-class Comprador{
-    - Tripla tripla
-    - string valorConsumo
-    - int recibirMoneda()
-    - string recibirOrdenProducto()
-    - string recibirReferenciaMáquina()
-    - string consumir()
+class Tripla<M, O, R> {
+  - moneda: M
+  - ordenProducto: O
+  - referenciaMaquina: R
+  + getMoneda(): M
+  + getOrdenProducto(): O
+  + getReferenciaMaquina(): R
 }
 
-class Tripla{
-    - int moneda
-    - string ordenProducto
-    - int referenciaMáquina
+class Maquina {
+  - cocacola: Deposito<Bebida>
+  - sprite: Deposito<Bebida>
+  - fanta: Deposito<Bebida>
+  - snickers: Deposito<Dulce>
+  - super8: Deposito<Dulce>
+  - monVuelto: Deposito<Moneda>
+  + Maquina(cantidad: int)
+  + comprarProducto(m: Moneda, s: Seleccion): Producto
+  + getVuelto(): Moneda
 }
 
-class Producto{
-    - string nombre
-    - int ID
-    - int precio
-    - int cantidad
-    - int calcularVuelto()
+class Deposito<T> {
+  - lista: ArrayList<T>
+  + add(item: T): void
+  + get(): T
 }
 
-class Máquina{
-    + int ID
-    - int contDepot
-    + int vuelto
-    - bool procesarMoneda()
-    + string entregarProducto()
-    + int devolverVuelto()
+enum Seleccion {
+  COCA_COLA
+  SPRITE
+  FANTA
+  SNICKERS
+  SUPER8
 }
 
-exception MáquinaExcepción{
-    - int code
-    - date timeStamp
-    - string mensaje
-    + int getCódigo()
-    + date getTimeStamp()
-    + string getMensaje()
+abstract class Moneda {
+  - valor: int
+  + Moneda(valor: int)
+  + getValor(): int
+  + compareTo(otra: Moneda): int
+  + toString(): String
 }
-exception pagoIncorrectoExcepción{
-    - int montoRequerido
-    + int getMonto()
+note right of Moneda : implements Comparable<Moneda>
+
+class Moneda100 { 
+  + Moneda100() 
 }
-exception noHayProductoExecepción{
-    - int montoRequerido
-    - string productoFaltante
-    + int getMonto()
-    + string getProductoFaltante()
+class Moneda500 { 
+  + Moneda500() 
+}
+class Moneda1000 { 
+  + Moneda1000() 
 }
 
-Moneda -- Comprador
-Moneda -- Máquina
+abstract class Producto {
+  - nombre: String
+  - ID: int
+  - precio: int
+  - cantidad: int
+  + getNombre(): String
+  + getPrecio(): int
+  + getID(): int
+}
+
+abstract class Bebida {
+  + getSabor(): String
+}
+
+abstract class Dulce {
+  + getSabor(): String
+}
+
+class CocaCola { 
+  + getSabor(): String 
+}
+class Sprite { 
+  + getSabor(): String 
+}
+class Fanta { 
+  + getSabor(): String 
+}
+class Snickers { 
+  + getSabor(): String 
+}
+class Super8 { 
+  + getSabor(): String 
+}
+
+exception PagoIncorrectoException {
+  + PagoIncorrectoException(msg: String)
+}
+exception PagoInsuficienteException {
+  + PagoInsuficienteException(msg: String)
+}
+exception NoHayProductoException {
+  + NoHayProductoException(msg: String)
+}
+
+' Relaciones
 Comprador *-- Tripla
-Comprador -- Máquina
-Máquina o-- Producto
-Máquina - MáquinaExcepción : create >
-pagoIncorrectoExcepción -- MáquinaExcepción
-noHayProductoExecepción -- MáquinaExcepción
+Comprador ..> Maquina
+Maquina o-- Deposito
+Maquina o-- Producto
+Maquina ..> Seleccion
+Maquina ..> PagoIncorrectoException
+Maquina ..> PagoInsuficienteException
+Maquina ..> NoHayProductoException
+
+Moneda <|-- Moneda100
+Moneda <|-- Moneda500
+Moneda <|-- Moneda1000
+
+Producto <|-- Bebida
+Producto <|-- Dulce
+
+Bebida <|-- CocaCola
+Bebida <|-- Sprite
+Bebida <|-- Fanta
+
+Dulce <|-- Snickers
+Dulce <|-- Super8
 @enduml
