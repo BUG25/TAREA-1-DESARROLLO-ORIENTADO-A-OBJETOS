@@ -7,6 +7,7 @@ import src.Productos.Bebidas.*; // COCA_COLA, SPRITE,FANTA
 import src.Productos.Dulces.*; //SUPER8 Y SNICKERS
 
 public class Maquina {
+    private int id;
     // depositos para cada  producto
     private Deposito<Bebida> cocacola;
     private Deposito<Bebida> sprite;
@@ -17,7 +18,8 @@ public class Maquina {
 // deposito gen para las monedad del vuelto
 private Deposito<Moneda> monVuelto;
     // crear depositos para cada producto y el vuelto
-    public Maquina (int cantidad) {
+public Maquina (int id, int cantidad) {
+    this.id = id;
     this.cocacola = new Deposito <> ();
     this.sprite = new Deposito <> ();
     this.fanta = new Deposito <> ();
@@ -82,6 +84,9 @@ public Producto comprarProducto(Moneda m, Seleccion p)
 }
 public Moneda getVuelto(){
     return monVuelto.get();
+    }
+public int getID(){
+    return this.id;
     }
 }
     
