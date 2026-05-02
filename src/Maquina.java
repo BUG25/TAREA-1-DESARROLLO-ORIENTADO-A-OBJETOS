@@ -7,6 +7,7 @@ import src.Productos.Bebidas.*; // COCA_COLA, SPRITE,FANTA
 import src.Productos.Dulces.*; //SUPER8 Y SNICKERS
 
 public class Maquina {
+    private int id;
     // depositos para cada  producto
     private Deposito<Bebida> cocacola;
     private Deposito<Bebida> sprite;
@@ -17,7 +18,8 @@ public class Maquina {
 // deposito gen para las monedad del vuelto
 private Deposito<Moneda> monVuelto;
     // crear depositos para cada producto y el vuelto
-    public Maquina (int cantidad) {
+public Maquina (int id, int cantidad) {
+    this.id = id;
     this.cocacola = new Deposito <> ();
     this.sprite = new Deposito <> ();
     this.fanta = new Deposito <> ();
@@ -27,11 +29,11 @@ private Deposito<Moneda> monVuelto;
 
     // rellenamos depositos con la cantidad
     for (int i = 0; i < cantidad; i++) {
-    cocacola.add(new CocaCola(101, "Coca Cola", Seleccion.COCA_COLA.getPrecio()));
-    sprite.add(new Sprite(102, "Sprite", Seleccion.SPRITE.getPrecio()));
-    fanta.add(new Fanta(201, "Fanta", Seleccion.FANTA.getPrecio()));
-    snickers.add(new Snickers(202, "Snickers", Seleccion.SNICKERS.getPrecio()));
-    super8.add(new Super8(203, "Super 8", Seleccion.SUPER8.getPrecio()));
+    cocacola.add(new CocaCola(Seleccion.COCA_COLA.getNombre(),Seleccion.COCA_COLA.getID(),Seleccion.COCA_COLA.getPrecio(),1));
+    sprite.add(new Sprite(Seleccion.SPRITE.getNombre(),Seleccion.SPRITE.getID(),Seleccion.SPRITE.getPrecio(),1));
+    fanta.add(new Fanta(Seleccion.FANTA.getNombre(),Seleccion.FANTA.getID(),Seleccion.FANTA.getPrecio(),1));
+    snickers.add(new Snickers(Seleccion.SNICKERS.getNombre(),Seleccion.SNICKERS.getID(),Seleccion.SNICKERS.getPrecio(),1));
+    super8.add(new Super8(Seleccion.SUPER8.getNombre(),Seleccion.SUPER8.getID(),Seleccion.SUPER8.getPrecio(),1));
     }
 }
 public Producto comprarProducto(Moneda m, Seleccion p)
@@ -81,6 +83,9 @@ public Producto comprarProducto(Moneda m, Seleccion p)
 }
 public Moneda getvuelto(){
     return monVuelto.get();
+    }
+public int getID(){
+    return this.id;
     }
 }
     
