@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class MainInteractivo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Maquina maquina = new Maquina(1,5);
+        Maquina maquina = new Maquina(5, 50);
         boolean continuar = true;
 
         System.out.println("=== BIENVENIDO AL EXPENDEDOR INTERACTIVO ===");
