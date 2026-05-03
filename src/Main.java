@@ -8,7 +8,7 @@ import java.util.Collections; /** comparable también */
 public class Main {
     public static void main(String[] args) {
         System.out.println("=== PRUEBAS DEL EXPENDEDOR ===\n");
-        Maquina maquina = new Maquina(3);
+        Maquina maquina = new Maquina(3, 50);
 
         /** PRUEBA COMPRA EXITOSA */ 
         System.out.println("- Prueba 1: Compra exitosa (Sprite $900, pago $1000)");
@@ -22,7 +22,7 @@ public class Main {
         System.out.println("Se ha consumido: '" + c2.getSaborConsumo() + "' (vacío en caso de fallo)");
         System.out.println("Vuelto: $" + c2.getTotalVuelto());
 
-        / ** PRUBEA EXCEPCION PAGA INCORRECTO */
+        /** PRUBEA EXCEPCION PAGA INCORRECTO */
         System.out.println("\n- Prueba 3: PagoIncorrectoExceptioN");
         Comprador c3 = new Comprador(null, Seleccion.COCA_COLA, maquina);
         System.out.println("Vuelto: $" + c3.getTotalVuelto());
