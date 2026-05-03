@@ -7,6 +7,6 @@ public class Snickers extends Dulce{
 
     @Override
     public String getSabor() {
-        return "src.Productos.Dulces.Snickers";
+        return "Snickers";
     }
 }

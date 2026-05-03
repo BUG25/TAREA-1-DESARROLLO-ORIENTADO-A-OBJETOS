@@ -7,6 +7,6 @@ public class CocaCola extends Bebida {
 
     @Override
     public String getSabor() {
-        return "src.Productos.Bebidas.CocaCola";
+        return "CocaCola";
     }
 }

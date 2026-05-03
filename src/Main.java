@@ -4,11 +4,34 @@ import src.Monedas.*;
 import java.util.ArrayList;  //sirve para la prueba de orednar monedas (comparable)
 import java.util.Collections;// comparable también
 
+/**
+ * Clase principal que contiene laspruebas de funcionamiento de la máquina expendedor.
+ * Se ejecutan distintos escenarios los cuales son compra exitosa, pago insuficiente,
+ * moneda nula, producto agotado, ordenación de moendas, etc.
+ */
 
 public class Main {
+
+    /**
+     * Método principal que ejecutas todas las pruebas de la máquina expendedora.
+     * 
+     * <p>las pruebas realizadas:
+     * <ol>
+     *     <li>compra exitosa.</li>
+     *     <li><li>Compra con pago insuficiente.</li>
+     *     <li>Pago nulo.</li>
+     *     <li>Pago insuficiente para el producto.</li>
+     *     <li>Producto agotado.</li>
+     *     <li>Ordenación de monedas usando Comparable.</li>
+     *     <li>Compra exitosa de otro producto.</li>
+     * </ol>
+     * </p>
+     * 
+     * @param args argumentos de línea de comandos -> no se usan
+     */
     public static void main(String[] args) {
         System.out.println("=== PRUEBAS DEL EXPENDEDOR ===\n");
-        Maquina maquina = new Maquina(3);
+        Maquina maquina = new Maquina(1,3);
 
         // PRUEBA COMPRAEXITOSA
         System.out.println("- Prueba 1: Compra exitosa (Sprite $900, pago $1000)");

@@ -8,6 +8,6 @@ public class Super8 extends Dulce {
 
     @Override
     public String getSabor() {
-        return "sabor a barra con chocolate";
+        return "Super8";
     }
 }

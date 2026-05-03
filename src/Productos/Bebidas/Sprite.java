@@ -7,6 +7,6 @@ public class Sprite extends Bebida {
 
     @Override
     public String getSabor() {
-        return "src.Productos.Bebidas.Sprite";
+        return "Sprite";
     }
 }

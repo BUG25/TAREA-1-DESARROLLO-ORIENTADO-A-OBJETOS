@@ -7,6 +7,6 @@ public class Fanta extends Bebida {
 
     @Override
     public String getSabor() {
-        return "src.Productos.Bebidas.Fanta";
+        return "Fanta";
     }
 }
